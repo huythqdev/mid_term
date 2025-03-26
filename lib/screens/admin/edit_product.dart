@@ -16,6 +16,7 @@ class _EditProductState extends State<EditProduct> {
   bool _isLoading = false;
 
   TextEditingController _idSanPhamController = TextEditingController();
+  TextEditingController _tenSanPhamController = TextEditingController();
   TextEditingController _loaiSPController = TextEditingController();
   TextEditingController _giaController = TextEditingController();
   String _hinhAnh = '';
@@ -27,6 +28,7 @@ class _EditProductState extends State<EditProduct> {
     if (args is Product) {
       _product = args;
       _idSanPhamController.text = _product.idSanPham;
+      _tenSanPhamController.text=_product.tenSanPham;
       _loaiSPController.text = _product.loaiSP;
       _giaController.text = _product.gia.toString();
       _hinhAnh = _product.hinhAnh;
@@ -53,6 +55,7 @@ class _EditProductState extends State<EditProduct> {
       final updatedProduct = Product(
         id: _product.id, // Giữ nguyên id gốc
         idSanPham: _idSanPhamController.text,
+        tenSanPham: _tenSanPhamController.text,
         loaiSP: _loaiSPController.text,
         gia: double.tryParse(_giaController.text) ?? 0.0,
         hinhAnh: _hinhAnh,
@@ -137,6 +140,15 @@ class _EditProductState extends State<EditProduct> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) => value!.isEmpty ? 'Vui lòng nhập ID sản phẩm' : null,
+                ),
+                SizedBox(height: 16),
+                TextFormField(
+                  controller: _tenSanPhamController,
+                  decoration: InputDecoration(
+                    labelText: 'Tên  sản phẩm',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) => value!.isEmpty ? 'Vui lòng nhập tên sản phẩm' : null,
                 ),
                 SizedBox(height: 16),
                 TextFormField(

@@ -2,7 +2,7 @@ import 'package:mongo_dart/mongo_dart.dart';
 import '../models/product.dart';
 
 class DatabaseService {
-  static const String MONGO_URL = "mongodb://192.168.1.106:27017/Shoe_Store";
+  static const String MONGO_URL = "mongodb://192.168.1.107:27017/Shoe_Store";
   static const String DATABASE_NAME = "Shoe_Store";
   static const String COLLECTION_NAME = "products";
 
@@ -11,7 +11,7 @@ class DatabaseService {
 
   static Future<void> connect() async {
     try {
-      _db = await Db.create("mongodb://192.168.1.106:27017/Shoe_Store");
+      _db = await Db.create("mongodb://192.168.1.107/Shoe_Store");
       await _db!.open();
       _collection = _db!.collection(COLLECTION_NAME);
     } catch (e) {
@@ -93,6 +93,7 @@ class DatabaseService {
       where.eq('_id',objectId),
       modify
           .set('idSanPham', updatedProduct.idSanPham)
+          .set('tenSanPham', updatedProduct.tenSanPham)
           .set('loaiSP', updatedProduct.loaiSP)
           .set('gia', updatedProduct.gia)
           .set('hinhAnh', updatedProduct.hinhAnh),

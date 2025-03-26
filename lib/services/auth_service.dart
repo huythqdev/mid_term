@@ -33,16 +33,16 @@ class AuthService {
 
       final result = await collection.insertOne(newUser);
 
-      print("✅ Insert result: ${result.isSuccess}");
-      print("🔄 Inserted ID: ${result.id}");
+      print("Insert result: ${result.isSuccess}");
+      print(" Inserted ID: ${result.id}");
 
       if (!result.isSuccess) {
-        print("❌ Insert failed. Lỗi chi tiết: ${result.writeError?.errmsg}");
+        print(" Insert failed. Lỗi chi tiết: ${result.writeError?.errmsg}");
       }
 
       return result.isSuccess;
     } catch (e) {
-      print("❌ Error registering user: $e");
+      print(" Error registering user: $e");
       return false;
     }
   }

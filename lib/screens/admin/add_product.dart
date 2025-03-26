@@ -14,6 +14,7 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   final _formKey = GlobalKey<FormState>();
   String idSanPham = '';
+  String tenSanPham = '';
   String loaiSP = '';
   double gia = 0;
   String hinhAnh = '';
@@ -42,7 +43,7 @@ class _AddProductState extends State<AddProduct> {
   Future<String?> _uploadImage(XFile imageFile) async {
     try {
       var request = http.MultipartRequest(
-          'POST', Uri.parse("http://192.168.1.106:3000/upload"));
+          'POST', Uri.parse("http://192.168.1.107:3000/upload"));
       request.files.add(await http.MultipartFile.fromPath('file', imageFile.path));
 
       var response = await request.send();
@@ -86,6 +87,11 @@ class _AddProductState extends State<AddProduct> {
                 value!.isEmpty ? 'Vui lòng nhập ID sản phẩm' : null,
               ),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Tên sản phẩm'),
+                onSaved: (value) => tenSanPham = value!,
+                validator: (value) => value!.isEmpty ? 'Vui lòng nhập tên sản phẩm' : null,
+              ),
+              TextFormField(
                 decoration: InputDecoration(labelText: 'Loại sản phẩm'),
                 onSaved: (value) => loaiSP = value!,
                 validator: (value) =>
@@ -111,6 +117,7 @@ class _AddProductState extends State<AddProduct> {
                     _formKey.currentState!.save();
                     final product = Product(
                       idSanPham: idSanPham,
+                      tenSanPham:tenSanPham,
                       loaiSP: loaiSP,
                       gia: gia,
                       hinhAnh: hinhAnh,
