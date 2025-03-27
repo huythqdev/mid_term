@@ -44,7 +44,9 @@ class _AddProductState extends State<AddProduct> {
     try {
       var request = http.MultipartRequest(
           'POST', Uri.parse("http://192.168.1.107:3000/upload"));
-      request.files.add(await http.MultipartFile.fromPath('file', imageFile.path));
+      // request.files.add(await http.MultipartFile.fromPath('file', imageFile.path));
+      request.files.add(await http.MultipartFile.fromPath('image', imageFile.path)); // Đúng với Multer
+      // request.files.add(await http.MultipartFile.fromPath('image', filePath)); // 'image' phải khớp với server
 
       var response = await request.send();
       if (response.statusCode == 200) {

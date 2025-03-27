@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:midterm_project/screens/auth/product_detail_screen.dart';
+import 'models/product.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
 import 'screens/admin/admin_home.dart';
@@ -29,6 +31,12 @@ class MyApp extends StatelessWidget {
         '/add-product': (context) => AddProduct(),
         '/edit-product': (context) => EditProduct(),
         '/delete-product': (context) => DeleteProduct(),
+        // '/detail-product': (context) => ProductDetailScreen(),
+        '/detail-product': (context) {
+          final product = ModalRoute.of(context)!.settings.arguments as Product;
+          return ProductDetailScreen(product: product);
+        },
+
 
       },
     );

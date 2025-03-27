@@ -60,4 +60,8 @@ class AuthService {
       return false;
     }
   }
+  static Future<void> logout() async {
+    print("🚪 User logged out.");
+    // Bạn có thể thêm logic xóa session hoặc token tại đây nếu cần
+  }
 }

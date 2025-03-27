@@ -49,6 +49,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           children: [
                             Text(
+                              'Chào mừng bạn trở lại TECHZONE SHOP',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                            SizedBox(height: 8), // Thêm khoảng cách nhỏ
+                            Text(
                               'Đăng nhập',
                               style: TextStyle(
                                 fontSize: 22,
